@@ -1,7 +1,8 @@
 {
-  "name": "objection-starter",
+  "name": "starter-2020",
+  "repository": "https://github.com/MostlyFocusedMike/starter-2020",
+  "description": "A homemade Expres, Objection, and TS React boilerplate",
   "version": "1.0.0",
-  "description": "",
   "author": "",
   "license": "ISC",
   "directories": {
@@ -11,14 +12,15 @@
   "scripts": {
     "start": "docker-compose up -d",
     "in:db": "docker-compose exec db psql boiler_room root",
-    "migrate": "docker-compose exec node_server npx knex migrate:latest",
-    "rollback": "docker-compose exec node_server npx knex migrate:rollback",
-    "seed": "docker-compose exec node_server npx knex seed:run",
+    "migrate": "docker-compose exec server npx knex migrate:latest",
+    "migrate:make": "npx knex migrate:make create_users",
+    "rollback": "docker-compose exec server npx knex migrate:rollback",
+    "seed": "docker-compose exec server npx knex seed:run",
     "lint": "eslint ."
   },
   "dependencies": {
     "express": "^4.17.1",
-    "knex": "^0.19.1",
+    "knex": "^0.20.8",
     "objection": "^1.6.9",
     "pg": "^7.12.0"
   },

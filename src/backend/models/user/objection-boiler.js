@@ -4,7 +4,7 @@ const Base = require('../base');
 
 class ObjectionBoiler extends Base {
     static get tableName() {
-        return 'articles';
+        return 'users';
     }
 
     static get jsonSchema() {
@@ -12,7 +12,7 @@ class ObjectionBoiler extends Base {
             type: 'object',
             properties: {
                 id: { type: 'integer' },
-                title: { type: 'string' },
+                name: { type: 'string' },
                 created_at: { type: 'date' },
                 updated_at: { type: 'date' },
             },
@@ -21,16 +21,12 @@ class ObjectionBoiler extends Base {
 
     static get relationMappings() {
         return {
-            tags: {
-                relation: Model.ManyToManyRelation,
-                modelClass: Path.join(__dirname, '..', 'tag'),
+            articles: {
+                relation: Model.HasManyRelation,
+                modelClass: Path.join(__dirname, '..', 'article'),
                 join: {
-                    from: 'articles.id',
-                    through: {
-                        from: 'article_tags.article_id',
-                        to: 'article_tags.tag_id',
-                    },
-                    to: 'tags.id',
+                    from: 'users.id',
+                    to: 'articles.user_id',
                 },
             },
         };

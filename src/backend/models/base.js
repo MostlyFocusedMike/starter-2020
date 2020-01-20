@@ -8,8 +8,13 @@ class Base extends Model {
         return true;
     }
 
+
     $beforeUpdate() {
         this.updated_at = new Date().toISOString();
+    }
+
+    static async all() {
+        return this.query();
     }
 
     static async find(id) {
