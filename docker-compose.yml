@@ -3,7 +3,7 @@ version: "3"
 services:
   server:
     build: './'
-    command: node src/backend/index.js
+    command: nodemon src/backend/index.js
     ports:
       - '8000:8000'
     environment:
@@ -14,10 +14,11 @@ services:
       DEV_DB_NAME: boiler_room
     volumes:
       - ./src/:/usr/app/src/
+      - ./public/:/usr/app/public/
       - ./package.json:/usr/app/package.json
     container_name: server_container
 
-  db:
+  pg_db:
     image: postgres:9.6-alpine
     ports:
       - '5431:5432'
@@ -27,4 +28,4 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: boiler_room
 
-    container_name: db_container
+    container_name: pg_db_container

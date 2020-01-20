@@ -9,7 +9,13 @@ WORKDIR /usr/app
 
 # this copies everything you need into from local into your docker container to start
 COPY ./src ./src/
+COPY ./public ./public/
 COPY ./knexfile.js .
-COPY ./package.json .
+COPY ./package*.json ./
+
+RUN npm install -g nodemon
+RUN npm ci
 
 RUN npm install
+
+CMD ["node", "./src/backend/server.js"]

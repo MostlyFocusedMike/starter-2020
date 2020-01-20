@@ -15,7 +15,7 @@ app.use(staticFiles);
 
 addAllRoutes(app);
 
-const port = process.env.PORT || 4321;
+const port = process.env.PORT || 8000;
 app.listen(port, '0.0.0.0', () => {
     console.log(`Example app listening on port 'http://localhost:${port}!`);
 });
