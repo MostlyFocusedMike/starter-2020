@@ -1,0 +1,31 @@
+{
+  "name": "objection-starter",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "start": "docker-compose up -d",
+    "in:db": "docker-compose exec db psql boiler_room root",
+    "migrate": "docker-compose exec node_server npx knex migrate:latest",
+    "rollback": "docker-compose exec node_server npx knex migrate:rollback",
+    "seed": "docker-compose exec node_server npx knex seed:run",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "knex": "^0.19.1",
+    "objection": "^1.6.9",
+    "pg": "^7.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3"
+  }
+}
