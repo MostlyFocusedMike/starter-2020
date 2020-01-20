@@ -1,64 +1,50 @@
-const Article = require('../../models/article');
-const Tag = require('../../models/tag');
-const Comment = require('../../models/comment');
+/* eslint-disable no-await-in-loop */
+const User = require('../../models/user');
 
 exports.seed = async (knex) => {
     await knex('tags').del();
-    await knex('articles').del();
+    await knex('users').del();
 
     // multiple create (all objects, even children must be new)
-    await Article.create([
+    await User.create([
         {
-            title: 'I am the first article',
-            content: 'Look I am the content on the first article',
-            tags: [
+            name: 'tom',
+            articles: [
                 {
-                    name: 'beginners',
-                },
-            ],
-            comments: [
-                {
-                    content: 'cool article',
-                },
-            ],
-        },
-        {
-            title: 'It is I, the second article',
-            content: 'lo and behold, the content for the second article',
-            tags: [
-                {
-                    name: 'advanced',
+                    title: 'I am the first article',
+                    tags: [
+                        {
+                            name: 'Beginners',
+                            slug: 'beginners',
+                        },
+                    ],
                 },
                 {
-                    name: 'fun',
+                    title: 'It is I, the second article',
+                    tags: [
+                        {
+                            name: 'Advanced JavaScript',
+                            slug: 'advanced-javascript',
+                        },
+                        {
+                            name: 'Fun',
+                            slug: 'fun',
+                        },
+                    ],
                 },
             ],
         },
     ]);
 
-    // single create
-    const article3 = await Article.create({
-        title: 'The third article is here',
-        content: 'My content is nicest because it is thrice-est',
-        tags: [{
-            name: 'neat',
-        }],
-    });
-
-    // access created objects for after-the-fact relation building
-    const jsTag = await Tag.create({ name: 'js' });
-    await article3.addRelations('tags', jsTag);
-    const articles = await Article.all();
-
-    const comment = await Comment.findBy('content', 'cool article');
-    article3.addRelations('comments', comment);
-
     // see what was made
-    for (let i = 0; i < articles.length; i++) {
-        console.log('\narticle: ', articles[i]);
-        const tags = await articles[i].listRelations('tags'); // eslint-disable-line no-await-in-loop
-        const comments = await articles[i].listRelations('comments'); // eslint-disable-line no-await-in-loop
-        console.log('tags: ', tags);
-        console.log('comments: ', comments);
+    const users = await User.all();
+    for (let i = 0; i < users.length; i++) {
+        console.log('user: ', users[i]);
+        const articles = await users[i].listRelations('articles');
+        for (let j = 0; j < articles.length; j++) {
+            console.log(articles[j]);
+            const tags = await articles[j].listRelations('tags');
+            console.log(tags, '\n');
+        }
     }
 };

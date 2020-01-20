@@ -11,10 +11,10 @@ module.exports = {
             database: process.env.DEV_DB_NAME,
         },
         migrations: {
-            directory: path.join(__dirname, 'src', 'db', 'migrations'),
+            directory: path.join(__dirname, 'src', 'backend', 'db', 'migrations'),
         },
         seeds: {
-            directory: path.join(__dirname, 'src', 'db', 'seeds'),
+            directory: path.join(__dirname, 'src', 'backend', 'db', 'seeds'),
         },
     },
 };

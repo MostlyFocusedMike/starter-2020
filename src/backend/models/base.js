@@ -12,6 +12,10 @@ class Base extends Model {
         this.updated_at = new Date().toISOString();
     }
 
+    static async all() {
+        return this.query();
+    }
+
     static async find(id) {
         return this.query().findById(id);
     }
@@ -20,13 +24,13 @@ class Base extends Model {
         return this.query().where(fieldName, '=', value).first();
     }
 
+    static async findAllBy(fieldName, value) {
+        return this.query().where(fieldName, '=', value);
+    }
+
     // obj or array
     static async create(itemOrItemsToCreate) {
         return this.query().insertGraph(itemOrItemsToCreate);
-    }
-
-    static async where(fieldName, value) {
-        return this.query().where(fieldName, '=', value);
     }
 
     async addRelations(relationName, relationObjOrObjs) {
