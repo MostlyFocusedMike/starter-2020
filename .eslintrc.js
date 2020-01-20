@@ -19,5 +19,6 @@ module.exports = {
         "class-methods-use-this": "off",
         "import/prefer-default-export": "off",
         "arrow-parens": "off",
+        "global-require": "off",
     },
 };
