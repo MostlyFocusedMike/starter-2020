@@ -40,10 +40,10 @@ exports.seed = async (knex) => {
     const users = await User.all();
     for (let i = 0; i < users.length; i++) {
         console.log('user: ', users[i]);
-        const articles = await users[i].listRelations('articles');
+        const articles = await users[i].relations('articles');
         for (let j = 0; j < articles.length; j++) {
             console.log(articles[j]);
-            const tags = await articles[j].listRelations('tags');
+            const tags = await articles[j].relations('tags');
             console.log(tags, '\n');
         }
     }

@@ -1,3 +1,4 @@
+// Belongs to table
 exports.up = (knex) => {
     return knex.schema.createTable('articles', (table) => {
         table.increments().primary();

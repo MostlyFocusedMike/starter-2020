@@ -38,7 +38,7 @@ class Base extends Model {
         return this.$relatedQuery(relationName).relate(relationObjOrObjs.id);
     }
 
-    async listRelations(relationName) {
+    async relations(relationName) {
         return this.$relatedQuery(relationName);
     }
 }

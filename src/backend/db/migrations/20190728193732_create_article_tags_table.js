@@ -1,3 +1,4 @@
+// Many to many table
 exports.up = (knex) => {
     return knex.schema.createTable('article_tags', (table) => {
         table.increments().primary();
