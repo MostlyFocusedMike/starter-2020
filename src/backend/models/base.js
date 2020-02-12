@@ -8,6 +8,7 @@ class Base extends Model {
         return true;
     }
 
+
     $beforeUpdate() {
         this.updated_at = new Date().toISOString();
     }
