@@ -10,7 +10,7 @@ const options = {
         res.set('x-timestamp', Date.now());
     },
 };
-const staticFiles = express.static(path.join(__dirname, '..', '..', 'public'), options);
+const staticFiles = express.static(path.join(__dirname, '..', '..', 'build'), options);
 app.use(staticFiles);
 
 addAllRoutes(app);

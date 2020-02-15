@@ -11,6 +11,9 @@
   },
   "scripts": {
     "start": "docker-compose up -d",
+    "build": "docker-compose exec server npx webpack",
+    "watch": "docker-compose exec server npx webpack --watch",
+    "in:svr": "docker-compose exec server bash",
     "in:db": "docker-compose exec db psql boiler_room root",
     "migrate": "docker-compose exec server npx knex migrate:latest",
     "migrate:make": "npx knex migrate:make create_users",
@@ -28,15 +31,17 @@
     "pg": "^7.12.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.1",
-    "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11"
+    "typescript": "^3.7.5"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3"
+    "eslint-plugin-react": "^7.14.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   }
 }

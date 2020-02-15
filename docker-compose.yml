@@ -13,10 +13,11 @@ services:
       DEV_DB_PSWD: root
       DEV_DB_NAME: boiler_room
     volumes:
-      - ./src/:/usr/app/src/
       - ./public/:/usr/app/public/
+      - ./src/:/usr/app/src/
       - ./package.json:/usr/app/package.json
-      - ./knexfile.js:/usr/app/knexfile.js
+      - ./tsconfig.json:/usr/app/tsconfig.json
+      - ./webpack.config.js:/usr/app/webpack.config.js
     container_name: server_container
 
   pg_db:
