@@ -12,6 +12,7 @@ services:
       DEV_DB_USER: root
       DEV_DB_PSWD: root
       DEV_DB_NAME: boiler_room
+      NODE_ENV: development
     volumes:
       - ./public/:/usr/app/public/
       - ./src/:/usr/app/src/
