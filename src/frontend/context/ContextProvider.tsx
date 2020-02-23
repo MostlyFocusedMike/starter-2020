@@ -1,11 +1,11 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import AppContext from '.';
 
-interface ContextProviderProps {
+interface ContextProps {
     children: ReactNode;
 }
 
-const ContextProvider: React.FC<ContextProviderProps>= ({ children }) => {
+const ContextProvider: React.FC<ContextProps> = ({ children }) => {
     const context = {
         test: 'hello there',
     }
